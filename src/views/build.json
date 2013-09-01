@@ -1,0 +1,15 @@
+{
+    "name": "view-extensions",
+    "builds": {
+        "item-view": {
+            "jsfiles": [
+                "js/item-view.js"
+            ]
+        },
+        "collection-view": {
+            "jsfiles": [
+                "js/collection-view.js"
+            ]
+        }
+    }
+}

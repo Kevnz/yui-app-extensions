@@ -1,0 +1,32 @@
+{
+  "name": "yui-app-extensions",
+  "version": "0.0.1-pre",
+  "description": "Extensions for using the YUI App Framework",
+  "author": "Kevin Isom <kevin.isom@gmail.com>",
+  "bugs": {
+    "url": "https://github.com/Kevnz/yui-app-extensions/issues"
+  },
+  "engines": {
+    "node": ">=0.8.0"
+  },
+  "directories": {
+    "lib": "."
+  },
+  "main": "./index.js",
+  "dependencies": {},
+  "devDependencies": {
+    "grunt": "~0.4.1",
+    "grunt-yui-contrib": "0.0.15"
+  },
+  "scripts": {},
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/Kevnz/yui-app-extensions.git"
+    }
+  ],
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/Kevnz/yui-app-extensions.git"
+  }
+}

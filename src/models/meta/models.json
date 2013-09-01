@@ -1,0 +1,15 @@
+{
+    "model-extensions": {
+        "use": [
+            "model-binder"
+        ],
+        "submodules": {
+            "model-binder": {
+                "requires": [
+                    "node",
+                    "selector-css3"
+                ]
+            }
+        }
+    }
+}

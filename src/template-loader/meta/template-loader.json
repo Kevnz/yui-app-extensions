@@ -1,0 +1,7 @@
+{
+    "template-loader": {
+        "use": [
+            "model-binder"
+        ]
+    }
+}

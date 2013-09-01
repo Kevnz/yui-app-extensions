@@ -1,0 +1,10 @@
+{
+    "name": "template-loader",
+    "builds": {
+        "template-loader": {
+            "jsfiles": [
+                "js/template-loader.js"
+            ]
+        }
+    }
+}

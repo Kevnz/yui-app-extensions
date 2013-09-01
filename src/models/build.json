@@ -1,0 +1,10 @@
+{
+    "name": "model-extensions",
+    "builds": {
+        "model-binder": {
+            "jsfiles": [
+                "js/binder.js"
+            ]
+        }
+    }
+}

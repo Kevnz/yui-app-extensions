@@ -1,0 +1,18 @@
+{
+    "view-extensions": {
+        "use": [
+            "item-view",
+            "collection-view"
+        ],
+        "submodules": {
+            "item-view": {
+                "requires": [
+                    "view",
+                    "handlebars",
+                    "node",
+                    "event"
+                ]
+            }
+        }
+    }
+}
