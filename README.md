@@ -11,7 +11,8 @@ Status
 * template-loader (beta)
 * collection-view (beta)
 * item-view (beta)
-* app-create (create)
+* app-create (alpha)
+
 Planned
 -------
 I have pushed the boundries of what I feel are comfortable sizes for a single app. I have been experimenting with a region extension for an app to allow for an app to have multiple regions to render views to. I will be looking at a list view that renders individual models and templates as part of a model list. I am also looking at a parent/child composite view for tree structures.
