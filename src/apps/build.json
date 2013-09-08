@@ -1,0 +1,10 @@
+{
+    "name": "app-extensions",
+    "builds": {
+        "app-create": {
+            "jsfiles": [
+                "js/app-create.js"
+            ]
+        }
+    }
+}

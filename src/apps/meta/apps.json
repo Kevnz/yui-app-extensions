@@ -1,0 +1,15 @@
+{
+    "app-extensions": {
+        "use": [
+            "app-create"
+        ],
+        "submodules": {
+            "app-create": {
+                "requires": [
+                    "app-base",
+                    "base-build"
+                ]
+            }
+        }
+    }
+}
