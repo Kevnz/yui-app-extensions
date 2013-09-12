@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Test Page</title>
+</head>
+<body class="yui3-skin-sam">
+
+<div id="log"></div>
+<div id="app"></div>
+<script src="http://yui.yahooapis.com/3.12.0/build/yui/yui-min.js"></script>
+<script>
+var Y = YUI({
+    coverage: ['app-regions'],
+    filter: (window.location.search.match(/[?&]filter=([^&]+)/) || [])[1] || 'raw'
+}).use('app-regions', 'node-event-simulate', 'test', 'test-console', function (Y) {
+    new Y.Test.Console().render('#log');
+    var testCase = new Y.Test.Case({
+
+    name: "App Regions",
+
+    //---------------------------------------------
+    // Tests
+    //---------------------------------------------
+
+    testInit: function () {
+        
+    }
+
+});
+    Y.Test.Runner.add(testCase);
+    Y.Test.Runner.run();
+});
+</script>
+
+</body>
+</html>

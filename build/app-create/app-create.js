@@ -5,6 +5,7 @@ var Base = Y.Base,
     DESTRUCTOR  = "destructor",
     VIEWS = "views",
     build = Base._build,
+    newViews,
     _build = function(name, main, extensions, px, sx, cfg) {
 
 
@@ -20,9 +21,8 @@ var Base = Y.Base,
         initializer,
         destructor,
         views,
-        builtViews = builtClass.prototype.views;
-
-        var builtRoutes = [];
+        builtViews = builtClass.prototype.views,
+        builtRoutes = [];
 
 
         // Augment/Aggregate
@@ -71,7 +71,7 @@ var Base = Y.Base,
     }
 
     builtClass.prototype.hasImpl = build._impl;
-    var newViews = Y.merge(builtClass.prototype.views, builtViews);
+    newViews = Y.merge(builtClass.prototype.views, builtViews);
     builtClass.prototype.views = newViews;
     if (dynamic) {
         builtClass.NAME = name;
@@ -81,11 +81,12 @@ var Base = Y.Base,
         builtClass.modifyAttrs = main.modifyAttrs;
     }
     return builtClass;
+},
+AppCreate = function () {
+
 };
 
-var AppCreate = function (config) {
-
-};
+ 
 AppCreate.NAME = 'app-create';
 
 AppCreate.create = function(name, base, extensions, px, sx) {

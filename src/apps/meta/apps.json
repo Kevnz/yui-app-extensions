@@ -1,7 +1,7 @@
 {
     "app-extensions": {
         "use": [
-            "app-create"
+            "app-create","app-regions"
         ],
         "submodules": {
             "app-create": {
@@ -9,6 +9,9 @@
                     "app-base",
                     "base-build"
                 ]
+            },
+            "app-regions" : {
+                "requires": ["app-base"]
             }
         }
     }
