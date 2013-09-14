@@ -2,10 +2,27 @@
     "view-extensions": {
         "use": [
             "item-view",
-            "collection-view"
+            "collection-view",
+            "composite-view"
         ],
         "submodules": {
             "item-view": {
+                "requires": [
+                    "view",
+                    "handlebars",
+                    "node",
+                    "event"
+                ]
+            },
+            "collection-view": {
+                "requires": [
+                    "view",
+                    "handlebars",
+                    "node",
+                    "event"
+                ]
+            },
+            "composite-view": {
                 "requires": [
                     "view",
                     "handlebars",
