@@ -5,6 +5,12 @@
             "jsfiles": [
                 "js/app-create.js"
             ]
+        },
+        "app-regions": {
+            "jsfiles": [
+                "js/app-regions.js"
+            ]
         }
+
     }
 }
