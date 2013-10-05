@@ -28,6 +28,7 @@ ModelBinder.prototype = {
         rootEl.all('[data-' + DATA_OPTIONS + ']').each(this._setOptions, this);
         rootEl.all('['+FULL_DATA_ATTR_PROPERTY+']').each(this._bindViaDataProperty, this);
         for (prop in model) {
+            //TODO This is great big mess, need to clean up
             if (model.hasOwnProperty(prop)) {
                 el = rootEl.one('#' + prop);
                 if (el === null) {
@@ -113,7 +114,6 @@ ModelBinder.prototype = {
         } else {
             options = new Function('return ' + dataAsStored)();//.split(',');
         }
-        _log(options);
         Y.Array.each(options, function (item) {
             node.append(Y.Node.create('<option>' + item + '</option>'));
         });
