@@ -1,0 +1,125 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title>ModelBinder Test</title>
+  <meta name="description" content="The HTML5 Herald">
+  <meta name="author" content="Kevin Isom<kevin.isom@gmail.com>">
+  <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.3.0/pure-min.css">
+  <link rel="stylesheet" href="http://rawgithub.com/tilomitra/csstypography/master/css/pure-typography.css">
+  <style>
+    body{ margin:40px;}
+  </style>
+</head>
+
+<body class="yui3-skin-sam pure-type">
+    <div id="user-1" class="pure-ribbon">
+        <label>Name:<labe><span data-bind-property="name"></span><br />
+        <label>Email:<labe><span data-bind-property="email"></span><br />
+        <label>Password:<labe><span data-bind-property="password"></span><br />
+        <label>State:<labe><span data-bind-property="state"></span><br />
+        <label>Details:<labe><span data-bind-property="details"></span><br />
+        <label>Beverage:<labe><span data-bind-property="beverage"></span><br />
+        <label>Remember?:<labe><span data-bind-property="remember"></span><br />
+    </div>
+    <br />
+    <div id="user-2">
+        <div id="results" class="pure-ribbon">
+            <label>Name:<labe><span data-bind-property="name"></span><br />
+            <label>Email:<labe><span data-bind-property="email"></span><br />
+            <label>Password:<labe><span data-bind-property="password"></span><br />
+            <label>State:<labe><span data-bind-property="state"></span><br />
+            <label>Details:<labe><span data-bind-property="details"></span><br />
+            <label>Beverage:<labe><span data-bind-property="beverage"></span><br />
+            <label>Remember?:<labe><span data-bind-property="remember"></span><br />
+        </div>
+        <form id="user-form" class="pure-form pure-form-stacked">
+            <fieldset>
+                <legend>A Simple Form</legend>
+                <label for="name">Name</label>
+                <input id="name" type="text" placeholder="Name">
+                <label for="email">Email</label>
+                <input id="email" type="email" placeholder="Email">
+
+                <label for="password">Password</label>
+                <input id="password" type="password" placeholder="Password">
+
+                <label for="state">State</label>
+                <select id="state" data-bind-options="stateOptions">
+
+                </select>
+                <label for="other">Beverage</label>
+                <input type="radio" id='beverage[0]' name="beverage" value="Beer"> Beer </input>
+                <input type="radio" id='beverage[1]' name="beverage" value="Water"> Water </input>
+                <input type="radio" id='beverage[2]' name="beverage" value="Coke Zero"> Coke Zero</input>
+
+                <label for="details">Extra Details</label>
+                <textarea id="details" class="pure-input-1-2"></textarea>
+
+                <label for="remember" class="pure-checkbox">
+                    <input id="remember" type="checkbox"> Remember me
+                </label>
+
+                <button id="sign-in" type="submit" class="pure-button pure-button-primary">Sign in</button>
+            </fieldset>
+        </form>
+    </div>
+  <script src="http://yui.yahooapis.com/3.12.0/build/yui/yui-min.js"></script>
+  <script src="../../../../../build/model-binder/model-binder-debug.js"></script>
+  <script>
+
+  YUI().use('model', 'model-binder','console', function (Y) {
+    var stateOptions = ['AL','CA','IL','VA'];
+    new Y.Console().render();
+    Y.UserModel = Y.Base.create('userModel', Y.Model, [Y.ModelBinder], {
+ 
+    }, {
+      ATTRS: {
+        name: {value: ''},
+        email: {value: ''},
+        details: {value: ''},
+        password: {value: ''},
+        state: {value: ''},
+        beverage: {value: ''},
+        remember: {value: false},
+      }
+    });
+    var otherUser = new Y.UserModel({email: 'otherUser@example.com', 
+        password:'passw0rd!', 
+        state: 'IL',
+        details: 'this is just another user\r\nmore info\r\n',
+        name: 'Another User',
+        remember: true,
+        beverage: 'Coke Zero',
+        rootEl: Y.one('#user-1')});
+    otherUser.bind();
+    var user = new Y.UserModel({email: 'test@example.com', 
+        password:'passit', 
+        state: 'CA',
+        details: 'werjewklr jewrjwe jwelr jewklr jewl\r\nmore tsurre\r\n',
+        name: 'Test User',
+        remember: false,
+        beverage: 'Water',
+        rootEl: Y.one('#user-2')});
+    user.bind({stateOptions:stateOptions});
+    Y.one('#sign-in').on('click', function (e) {
+        e.preventDefault();
+        var details =[
+            'User name:' + user.get('name'),
+            'User email:' + user.get('email'),
+            'User details:' + user.get('details').replace('\r\n','<br />'),
+            'User password:' + user.get('password'),
+            'User state:' + user.get('state'),
+            'User beverage:' + user.get('beverage'),
+            'User Remember Me:' + user.get('remember'),
+        ];
+        Y.one('#results').addClass('pure-ribbon-success').setHTML(details.join('<br />'));
+
+    });
+
+  });
+  </script>
+</body>
+</html>
