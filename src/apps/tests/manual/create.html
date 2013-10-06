@@ -1,0 +1,122 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title>AppCreate Test</title>
+  <meta name="description" content="The HTML5 Herald">
+  <meta name="author" content="Kevin Isom<kevin.isom@gmail.com>">
+  <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.3.0/pure-min.css">
+  <link rel="stylesheet" href="http://rawgithub.com/tilomitra/csstypography/master/css/pure-typography.css">
+  <style>
+    body{ margin:40px;}
+  </style>
+</head>
+
+<body class="yui3-skin-sam pure-type">
+     <div class="wrapper">
+    <div id="app"></div>
+    <div id="actions">
+    <a href="/first" class="pure-button">First App Route</a>
+    <a href="/second" class="pure-button">Second App Route</a>
+    </div>
+  </div>
+
+  <script src="http://yui.yahooapis.com/3.12.0/build/yui/yui-min.js"></script>
+  <script src="../../../../build/app-create/app-create-debug.js"></script>
+  <script>
+
+  YUI().use('app', 'app-create','console', function (Y) {
+ 
+    new Y.Console().render();
+
+    var simpleView  = Y.Base.create('simpleView', Y.View, [], {
+        render: function () {
+            var container, message, source, html;
+            Y.log('view');
+            container = this.get('container'); 
+            message = this.get('message'); 
+            html =  '<b>The Message is ' + message + ' </b>';
+            Y.log(html);
+            container.setHTML(html);
+            if (!container.inDoc()) { 
+                Y.one('body').append(container);
+            } else { 
+                return this;
+            } 
+            return this;
+        }
+    }); 
+    var firstView  = Y.Base.create('firstView', Y.View, [], {
+        render: function () {
+            var container, message, source, html;
+            Y.log('view');
+            container = this.get('container'); 
+            message = this.get('message'); 
+            html =  '<b>The Message is ' + message + ' </b>';
+            Y.log(html);
+            container.setHTML(html);
+            if (!container.inDoc()) { 
+                Y.one('body').append(container);
+            } else { 
+                return this;
+            } 
+            return this;
+        }
+    });
+    Y.FirstApp = Y.Base.create('secondApp', Y.App, [], {
+        views: {
+            home: {
+                type: simpleView
+            }
+        },
+        showFirst: function (req, res, next) {
+          Y.log('show home');
+          this.showView('home', {message: 'First App and Second Route' });
+        },
+        initializer: function () { 
+          Y.log('init first'); 
+        }  
+    }, {
+        ATTRS: {
+            routes: {
+                value: [
+                    { path:'/first', callbacks:'showFirst' }
+                ]
+            }
+        }
+    }); 
+    Y.SecondApp = Y.Base.create('secondApp', Y.App, [], {
+        views: {
+            second: {
+                type: simpleView
+            }
+        },
+        showSecond: function (req, res, next) {
+          this.showView('second', {message: 'Second App and Second Route' });
+        },
+        initializer: function () { 
+          Y.log('init second');
+        }  
+    }, {
+        ATTRS: {
+            routes: {
+                value: [
+                    { path:'/second', callbacks:'showSecond' }
+                ]
+            }
+        }
+    }); 
+    var FullApp = Y.App.create('fullApp', Y.App, [Y.FirstApp, Y.SecondApp], { 
+        initializer: function () { 
+          Y.log('init Full');  
+        }});
+    var fullApp = new FullApp({container: 'body',viewContainer:'#app'});
+    Y.log(fullApp.views);
+    fullApp.render().save('/first');
+ 
+  });
+  </script>
+</body>
+</html>
