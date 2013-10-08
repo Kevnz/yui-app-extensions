@@ -28,4 +28,4 @@ Y.extend(CollectionView, Y.View, {
 });
 Y.CollectionView = CollectionView;
 
-}, '@VERSION@');
+}, '@VERSION@', {"requires": ["view", "handlebars", "node", "event"]});
