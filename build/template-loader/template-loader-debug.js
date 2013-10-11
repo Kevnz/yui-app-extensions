@@ -1,5 +1,6 @@
 YUI.add('template-loader', function (Y, NAME) {
 
+Y.log('test');
 Y.TemplateLoader = function(uri) {
     var cfg,
     request;
@@ -10,4 +11,6 @@ Y.TemplateLoader = function(uri) {
     return request.responseText;
 };
 
-}, '@VERSION@', {"use": ["model-binder"]});
+Y.log('tester');
+
+}, '@VERSION@', {"requires": ["io"]});

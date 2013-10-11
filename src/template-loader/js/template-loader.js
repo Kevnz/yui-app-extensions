@@ -1,3 +1,4 @@
+Y.log('test');
 Y.TemplateLoader = function(uri) {
     var cfg,
     request;
@@ -7,3 +8,5 @@ Y.TemplateLoader = function(uri) {
     request = Y.io(uri, cfg);
     return request.responseText;
 };
+
+Y.log('tester');

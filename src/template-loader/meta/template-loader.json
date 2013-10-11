@@ -1,7 +1,7 @@
 {
     "template-loader": {
-        "use": [
-            "model-binder"
+        "requires": [
+            "io"
         ]
     }
 }

@@ -10,4 +10,5 @@ Y.TemplateLoader = function(uri) {
     return request.responseText;
 };
 
-}, '@VERSION@', {"use": ["model-binder"]});
+
+}, '@VERSION@', {"requires": ["io"]});
