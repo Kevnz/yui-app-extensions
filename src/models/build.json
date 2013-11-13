@@ -5,6 +5,11 @@
             "jsfiles": [
                 "js/binder.js"
             ]
+        },
+        "model-sync-cached-rest": {
+            "jsfiles": [
+                "js/cached-rest.js"
+            ]
         }
     }
 }

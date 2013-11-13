@@ -9,6 +9,12 @@
                     "node",
                     "selector-css3"
                 ]
+            },
+            "model-sync-cached-rest": {
+                "requires": [
+                    "model-sync-rest",
+                    "model-sync-local"
+                ]
             }
         }
     }
